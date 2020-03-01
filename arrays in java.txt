@@ -1,0 +1,189 @@
+package samatha;
+import java.util.Scanner;
+ public class abc 
+ {
+	 Scanner s=new Scanner(System.in);
+	 int arr[]=new int[100];
+	 int n=0,value,index,search;
+	 public  void deleteeall(int search)
+	 {
+		 for(int i=0;i<n;i++)
+		 {
+			 if(search==arr[i])
+			 {
+				 for(int j=i;j<n;j++)
+				 {
+					 arr[j]=arr[j+1];
+				 }
+				 i=-1;
+				 n--;
+		     }
+		 }
+	 }
+	 public void deleteelast(int search)
+	 {
+		 for(int i=n;i>0;i--)
+		 {
+			 if(search==arr[i])
+			 {
+				 for(int j=i;j<n;j++)
+				 {
+					 arr[j]=arr[j-1];
+				 }
+				 n--;
+				 break;
+			 }
+		 }
+	 }
+	 public void deleteefirst(int search)
+	 {
+				 for(int i=0;i<n;i++)
+				 {
+					 if(search==arr[i])
+					 {
+						 for(int j=i;j<n;j++)
+						 {
+							 arr[j]=arr[j+1];
+						 }
+						 n--;
+						 break;
+					 }
+				 }
+	 }
+	 public void linearsearch(int search)
+	 {
+		 int flag=0;
+		 for(int i=0;i<n;i++)
+		 {
+			 if(search==arr[i])
+			 {
+				 flag++;
+			 }
+		 }
+			 if(flag>=1)
+			 {
+            System.out.println("element exists in an array");
+			 }
+			 else {
+				 System.out.println("element exists not in an array"); 
+			 }
+		
+	 }
+	 public void insertindex(int value,int index)
+	 {
+		 int i;
+	     for( i=n;i>index;i--)
+	     {
+	    	 arr[i]=arr[i-1];
+	     }
+	     n++;
+	     arr[index]=value;
+	 }
+	 public void insertlast(int value)
+	 {
+		 arr[n]=value;
+	     n++;
+		 
+	 }
+      public void insertfirst(int value)
+      {
+		     if(arr[0]==0)
+		     {
+		     arr[0]=value;
+		     n++;
+		     }
+		     else
+		     {
+		     for(int i=n;i>=0;i--)
+		     {
+		    	 arr[i+1]=arr[i];
+		     }
+		     arr[0]=value;
+		     n++;
+		     }
+      }
+      public  void display()
+      {
+    	  for(int i=0;i<n;i++)
+    	  {
+    		  System.out.println(i+" "+arr[i]);
+    	  }
+    		  
+      }
+	 public void fgh()
+	 {
+		 int opt;
+		 System.out.println("1.insert first");
+		 System.out.println("2.insert last");
+		 System.out.println("3.insert index");
+		 System.out.println("4.linear search");
+		 System.out.println("5.delete first");
+		 System.out.println("6.delete last");
+		 System.out.println("7.delete all occurence");
+		 do {
+		     System.out.println("enter opt");
+		     Scanner s=new Scanner(System.in);
+		     opt=s.nextInt();
+		 if(opt==1)
+		 {
+			 System.out.println("enter value");
+		     value=s.nextInt();
+		     insertfirst(value);
+		     display();
+		 }
+		 if(opt==2)
+		 {
+			 System.out.println("enter value");
+		     value=s.nextInt();
+			 insertlast(value);
+			 display();
+		 }
+		 if(opt==3)
+		 {
+			 System.out.println("enter value");
+			 value=s.nextInt();
+		     System.out.println("enter index");
+		     index=s.nextInt();
+			 insertindex(value,index);
+			 display();
+		 }
+		 if(opt==4)
+		 {
+			 System.out.println("enter search value");
+			 search=s.nextInt();
+			 linearsearch(search);
+			 display();
+		 }
+		 if(opt==5)
+		 {
+			 System.out.println("enter search value");
+			 search=s.nextInt();
+			 deleteefirst(search);
+			 display();
+		 }
+		 if(opt==6)
+		 {
+			 System.out.println("enter search value");
+			 search=s.nextInt();
+			 deleteelast(search);
+			 display();
+		 }
+		 if(opt==7)
+		 {
+			 System.out.println("enter search value");
+			 search=s.nextInt();
+			 deleteeall(search);
+			 display();
+		 }
+		 }
+		 while(opt!=0);
+	 }
+ 
+	 public static void main(String[] args)
+	 {
+		 abc a=new abc();
+		 a.fgh();
+		
+	 }
+ };
+
