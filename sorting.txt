@@ -1,0 +1,141 @@
+package project1;
+import java.util.Scanner;
+public class Menu1 {
+	int i,j,n=0,temp,search;
+	int arr[]=new int[15];
+	public void bubblesort()
+	{
+		for(i=0;i<n-1;i++)
+		{
+			for(j=0;j<n-1;j++)
+			{
+				if(arr[j]>arr[j+1])
+				{
+					temp=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+					
+				}
+			}
+		}
+	}
+	public void selection()
+	{
+		int min=0,loc;
+		for(i=0;i<n;i++)
+		{
+			min=arr[i];
+			loc=i;
+			for(j=i+1;j<n;j++)
+			{
+				if(min>arr[j])
+				{
+					min=arr[j];
+					loc=j;
+				}
+			}
+			temp=arr[i];
+			arr[i]=arr[loc];
+			arr[loc]=temp;
+		}
+	}
+	public int binarysearch(int search)
+	{
+		int mid=-1,l=0,r=n;
+		for(i=0;i<n;i++)
+		{
+			for(j=i;j<n;j++)
+			{
+			if(arr[i]>arr[j])
+			{
+				temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;		
+			}
+			}
+		}
+		display();
+		while(l<r)
+		{
+			mid=(l+r)/2;
+			if(search==arr[mid])
+			{
+				return mid;
+			}
+			else if(search>arr[mid])
+			{
+				l=mid+1;
+			}
+			else if(search>arr[mid])
+			{
+				r=mid-1;
+			}	
+		}
+		return mid;
+	}
+	     public void dynamicArray()
+	     {
+	    	 
+	    	 System.out.println("enter n value");
+				Scanner s=new Scanner(System.in);
+				n =s.nextInt();
+				 System.out.println("enter"+n+"values");
+				 for(i=0;i<n;i++)
+				 {
+					 arr[i]=s.nextInt();
+							 
+				 }
+	    	 
+	     }
+	     public void display()
+	     {
+	    	 for(i=0;i<n;i++)
+	    	 {
+	    		 System.out.println(arr[i]);
+	    	 }
+	     }
+			public void sorting()
+			{
+				int opt;
+				System.out.println("1.bubblesort");
+				System.out.println("2.selection");
+				System.out.println("3.binary search");
+				do {
+					System.out.println("enter option");
+					Scanner s=new Scanner(System.in);
+					opt =s.nextInt();
+					if(opt==1)
+					{
+						dynamicArray();
+						bubblesort();
+						display();
+						
+					}
+					if(opt==2)
+					{
+						dynamicArray();
+						selection();
+						display();
+					}
+					if(opt==3)
+					{
+						
+						dynamicArray();
+						System.out.println("enter search values");
+						search =s.nextInt();
+						int index=binarysearch(search);
+						System.out.println(index);
+					}
+				   }
+				while(opt!=0);
+				
+			}
+			
+
+			public static void main(String[] args) 
+			{	
+		       Menu1 obj=new Menu1();
+		       obj.sorting();
+			}
+
+	}
