@@ -1,9 +1,8 @@
-
 package jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-public class TaskOne 
+public class TaskOne
 {
     public void connect()
     {
@@ -21,14 +20,16 @@ public class TaskOne
 			}
 			con.close();
 		}
-    	catch(ClassNotFoundException | SQLException e)
+    	catch( Exception e)
     	{
     		System.out.println(e);
     	}
     }
 	public static void main(String[] args)
 	{
-         TaskOne j=new TaskOne();
-         j.connect();
+         TaskOne t=new TaskOne();
+         t.connect();
 	}
 }
+
+   
